@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+</head>
+<body>
+    <div style="background-image: url(../image/download.jpg); background-size: contain; height: 30vh;">
+        <p style="display: none;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, labore nam incidunt, itaque quisquam similique doloribus explicabo, iusto delectus ratione voluptatem dolores nobis impedit beatae maiores eaque facere nesciunt at?</p>
+    </div>
+
+    <div style="background-color: black; padding: 2em;">
+    <h1 style="text-transform: uppercase; font-family: sans-serif; text-align: center; padding: 2em 2em; color: white;">My Account</h1>
+    {% if user.is_authenticated %}
+      
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" accept="image/*"  name="image" id="image" style="padding-bottom: 2em;">
+        <br>
+        <img src="{{profiled.image.url}}" alt="" style="width: 30%; border-radius: 25px;">
+        <br>
+        <span style=" color: white; font-size:2rem; text-transform: capitalize; font-family: sans-serif;">{{user}}</span>
+        <br>
+        <a href="" style="text-decoration: none;">
+            <span style="color: white; font-size:2rem; text-transform: capitalize; font-family: sans-serif; padding-top: 2em; ">{{user.email}}</span>
+        </a>
+
+        <h1 style="color: white; font-size:2rem; text-transform: capitalize; font-family: sans-serif;">My details</h1>
+        <h1 style="color: white; font-size:2rem; text-transform: capitalize; font-family: sans-serif;">full name</h1>
+        <input type="text" name="text" placeholder="username" id="username" value="{{edited.username}}">
+
+        <p style="color: white; font-size:2rem; text-transform: capitalize; font-family: sans-serif;">email address</p>
+        <input type="email" name="email" placeholder="email" id="email"  value="{{edited.username}}">
+        <br>
+        <button>save profile</button>
+    </form>
+    </div>
+    {% endif %}
+</body>
+</html>
